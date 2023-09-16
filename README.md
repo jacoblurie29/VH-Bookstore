@@ -69,8 +69,8 @@ git push --set-upstream-origin <new_branch_name>
 **Basic Functionality**: the user should be able to enter the book title, author, genre, etc. of the book and add the book to the database. 
 
 
-# Tab 4: Make a drag and drop bookshelves for organizing the genre of the book
-**Basic Functionality**: the user should be able to drag and drop books to reorganize them between the 3 genres: unknown, fiction, and non-fiction. 
+# Tab 4: Make a drag and drop bookshelves for the book sales
+**Basic Functionality**: the user should to collect a list of all the books from the book sales (no repeats) and sort them by genre. 
 
 # Tab 5: Make a visual calendar for showing various metrics
 **Basic Functionality**: the user should be able to choose from some filters and see the results displayed on a calendar. 
