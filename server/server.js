@@ -133,7 +133,7 @@ app.delete('/deleteBookSale', async (req, res) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.VITE_PORT || 5050;
 app.listen(PORT, () => {
 	console.log(`🚀 [SERVER]: Server is running on port ${PORT}`);
 });

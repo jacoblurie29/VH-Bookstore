@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
+
 const Example = () => {
 	// number of books as a react state (null is the initial value)
 	const [numBooks, setNumBooks] = useState(null);
 
 	// error as a react state (null is the initial value)
 	const [error, setError] = useState(null);
-
 	// async function to fetch data from the server
 	const fetchData = async () => {
 		// fetch from api
-		const res = await fetch(`http://localhost:${process.env.PORT}/getBookSales`, {
+		const res = await fetch(`http://localhost:${process.env.VITE_PORT}/getBookSales`, {
 			method: 'GET',
 		});
 

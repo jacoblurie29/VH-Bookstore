@@ -1,11 +1,16 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-	plugins: [react()],
-	define: {
-		// https://github.com/vitejs/vite/issues/1973#issuecomment-815695512
-		'process.env': process.env,
-	},
-});
+export default ({ mode }) => {
+	// Load app-level env vars to node-level env vars.
+	process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
+
+	return defineConfig({
+		plugins: [react()],
+		define: {
+			// https://github.com/vitejs/vite/issues/1973#issuecomment-815695512
+			'process.env': process.env,
+		},
+	});
+};
