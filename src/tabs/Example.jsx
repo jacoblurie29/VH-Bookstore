@@ -10,7 +10,9 @@ const Example = () => {
 	// async function to fetch data from the server
 	const fetchData = async () => {
 		// fetch from api
-		const res = await fetch(`http://localhost:${process.env.PORT}/getBookSales`);
+		const res = await fetch(`http://localhost:${process.env.PORT}/getBookSales`, {
+			method: 'GET',
+		});
 
 		// convert response to json
 		const data = await res.json();
