@@ -1,29 +1,48 @@
+import React from 'react';
 import './App.css';
 import 'react-tabs/style/react-tabs.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import Example from './tabs/Example';
+import BookSales from './tabs/BookSales';
+import MonthlySales from './tabs/MonthlySales';
+import AddBook from './tabs/AddBook';
+import Bookshelf from './tabs/Bookshelf';
+import Calendar from './tabs/Calendar';
 
-function App() {
+const App = () => {
 	return (
 		<div className="appHome">
 			<Tabs>
 				<TabList>
-					<Tab>Home</Tab>
-					<Tab>About</Tab>
-					<Tab>Profile</Tab>
+					<Tab>Example</Tab>
+					<Tab>Book Sales</Tab>
+					<Tab>Monthly Sales</Tab>
+					<Tab>Add Book</Tab>
+					<Tab>Bookshelf</Tab>
+					<Tab>Calendar</Tab>
 				</TabList>
 
 				<TabPanel>
-					<h2>Any content 1</h2>
+					<Example />
 				</TabPanel>
 				<TabPanel>
-					<h2>Any content 2</h2>
+					<BookSales />
 				</TabPanel>
 				<TabPanel>
-					<h2>Any content 3</h2>
+					<MonthlySales />
+				</TabPanel>
+				<TabPanel>
+					<AddBook />
+				</TabPanel>
+				<TabPanel>
+					<Bookshelf />
+				</TabPanel>
+				<TabPanel>
+					<Calendar />
 				</TabPanel>
 			</Tabs>
 		</div>
 	);
-}
+};
 
 export default App;
