@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import connectToMongoDB from './mongodb.config.js';
 import { seedData } from './seedData/seedData.js';
 import BookSale from './models/bookSale.model.js';
@@ -7,6 +8,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 
 const seedTheData = async () => {
 	// Connect to MongoDB
