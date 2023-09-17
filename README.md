@@ -12,23 +12,37 @@ But we now need you to help us build a frontend for this.
 
 ### Backend API
 
-The backend API specification is as follows:
+These are the following backend API endpoints.
 
-`/api/getBook`
+The implementation of these endpoints can be found in `server/server.js`.
 
--   gets a book
+[GET] `/getBookSales`
 
-`/api/addBook`
+-   gets an array of BookSale(s)
 
--   adds a book
+```ts
+interface BookSale = {
+    title: string;
+    author: string;
+    cost: number;
+    genre: string;
+    purchaserName: string;
+    purchaserEmail: string;
+    saleDate: string;
+}
+```
 
-`/api/editBook`
+[POST] `/addBookSale`
 
--   edits a book
+-   adds a book to the database
 
-`/api/deleteBook`
+[PUT] `/updateBookSale`
 
--   deletes a book
+-   updates a book sale
+
+[DELETE] `/deleteBookSale`
+
+-   deletes a book sale
 
 ### Prerequisites
 
