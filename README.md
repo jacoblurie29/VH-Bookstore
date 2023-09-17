@@ -43,6 +43,7 @@ npm run dev
 1. Good coding practices
 2. Document your code
 3. Git commit often in your own branches
+4. Create a pull request on GitHub so other people can review you work
 
 ```
 git pull
