@@ -30,10 +30,16 @@ git clone https://github.com/jacoblurie29/VH-Bookstore
 npm i
 ```
 
-3. run development mode
+3. run the frontend (in one terminal)
 
 ```
-npm run dev
+npm run start
+```
+
+4. run the backend (in a seperate terminal)
+
+```
+npm run server
 ```
 
 4. duplicate `.env.template` and rename it to `.env`. then fill in the values
@@ -45,6 +51,7 @@ npm run dev
 3. Git commit often in your own branches
 4. Create a pull request on GitHub so other people can review you work
 
+##### Git Refresh:
 ```
 git pull
 git checkout -b <new_branch_name>
