@@ -167,7 +167,7 @@ const AddBook = () => {
 			<label htmlFor="saleDate">Sale Date: </label>
 			<input type="date" name="saleDate" id="saleDate" required />
 			<br />
-			<button type="submit" />
+			<input type="submit" value="Add Book" />
 		</form>
 	);
 };
