@@ -142,7 +142,7 @@ const AddBook = () => {
 				<option value="fiction">Fiction</option>
 			</select>
 			<br />
-			<label htmlFor="purchaserName">Purchaser's Name </label>
+			<label htmlFor="purchaserName">{"Purchaser's Name "}</label>
 			<input type="text" name="purchaserName" id="purchaserName" required />
 			{
 				pnameError && 
@@ -153,7 +153,7 @@ const AddBook = () => {
 				</span>
 			}
 			<br />
-			<label htmlFor="purchaserEmail">Purchaser's Email </label>
+			<label htmlFor="purchaserEmail">{"Purchaser's Email "}</label>
 			<input type="text" name="purchaserEmail" id="purchaserEmail" required />
 			{
 				pemailError && 
