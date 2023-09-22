@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-
 const Example = () => {
 	// number of books as a react state (null is the initial value)
 	const [numBooks, setNumBooks] = useState(null);
