@@ -92,13 +92,13 @@ git push --set-upstream-origin <new_branch_name>
 
 **Where to start**: `src/tabs/AddBook.js`
 
-## Tab 4: Make a drag and drop bookshelves for the book sales
+## Tab 4: Book sales data table
 
-**Basic Functionality**: The user should be able to re-classify the genre of the books using a drag and drop interface.
+**Basic Functionality**: 
 
-**Bonus Feature**: The modified books should be saved to the database automatically with each drag and drop.
+**Bonus Feature**: The booksales and all of their information should be put in a table
 
-**Hint**: Look up packages like `react-dnd` or `dnd-kit` to get started.
+**Hint**: Check this out [Material UI](https://mui.com/material-ui/react-table/)
 
 **Where to start**: `src/tabs/Bookshelf.js`
 
