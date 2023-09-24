@@ -3,10 +3,10 @@ const BookSales = () => {
 	// TODO:
 	// number of books as a react state (null is the initial value)
 	const [numBooks, setNumBooks] = useState(null);
-	const [saleBooks, setSaleBooks] = useState(null);
 	const [costBooks, setCostBooks] = useState([]);
 	const [sum, setSum] = useState(null);
 	const [genre, setGenre] = useState('All genre');
+	const [genreName, setName] = useState(new Set());
 
 	// error as a react state (null is the initial value)
 	const [error, setError] = useState(null);
@@ -34,12 +34,16 @@ const BookSales = () => {
 			.then(data => {
 				// set the number of books
 				console.log(data);
-				setNumBooks(data.length);
 
 				// create an array that save the costs
 				const temp = [];
+
+				//create a set that store the name of each genre
+				let tempName = new Set();
+
 				// for loop to save the data into the array
 				for (let i = 0; i < data.length; ++i) {
+					tempName.add(data[i].genre);
 					if (data[i].genre === genre) {
 						console.log(data[i]);
 						temp.push(data[i].cost);
@@ -48,6 +52,10 @@ const BookSales = () => {
 						temp.push(data[i].cost);
 					}
 				}
+
+				// call setName
+				setName(tempName);
+
 				// call setArray
 				setCostBooks(temp);
 
@@ -56,6 +64,7 @@ const BookSales = () => {
 				for (let i = 0; i < temp.length; ++i) {
 					tempVar = tempVar + temp[i];
 				}
+
 				// call setSum
 				setSum(tempVar);
 			})
@@ -72,12 +81,9 @@ const BookSales = () => {
 				Picak a genres:
 				<select value={genre} onChange={e => setGenre(e.target.value)}>
 					<option value="All genre">All genre</option>
-					<option value="Fantasy">Fantasy</option>
-					<option value="Fiction">Fiction</option>
-					<option value="Dystopian">Dystopian</option>
-					<option value="Romance">Romance</option>
-					<option value="Classic">Classic</option>
-					<option value="Adventure">Adventure</option>
+					{Array.from(genreName).map(genre => (
+						<option value={genre}>{genre}</option>
+					))}
 				</select>
 			</label>
 			<div>Total sales of books: {sum}</div>
