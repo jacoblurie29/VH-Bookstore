@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
 const BookSales = () => {
 	// TODO:
-	// display a bar chart
-	// chart is total month sale in dollars
-
 	// number of books as a react state (null is the initial value)
-	const [Books, setBooks] = useState(null);
+	const [numBooks, setNumBooks] = useState(null);
+	const [saleBooks, setSaleBooks] = useState(null);
+	const [costBooks, setCostBooks] = useState([]);
+	const [sum, setSum] = useState(null);
+	const [genre, setGenre] = useState('All genre');
 
 	// error as a react state (null is the initial value)
 	const [error, setError] = useState(null);
 
-	// array of costs seperated by month as a react state(0 is the initial value)
-	const [costArray, setCostArray] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-
-	const [salesChart, setSalesChart] = useState(null);
-
+	// async function to fetch data from the server
 	const fetchData = async () => {
 		// fetch from api
 		const res = await fetch(`http://localhost:${process.env.VITE_PORT}/getBookSales`, {
@@ -32,69 +27,61 @@ const BookSales = () => {
 
 	// when the component mounts, fetch data
 	useEffect(() => {
+		console.log('hello');
 		// call fetchData (which returns a promise)
 		fetchData()
 			// we use .then to handle the promise
 			.then(data => {
 				// set the number of books
-				console.log(data[2].saleDate);
-				setBooks(data);
-				for (let i = 0; i < 21; i++) {
-					const a = data[i].saleDate;
-					const bookDate = new Date(a);
-					costArray[bookDate.getMonth()] += data[i].cost;
+				console.log(data);
+				setNumBooks(data.length);
+
+				// create an array that save the costs
+				const temp = [];
+				// for loop to save the data into the array
+				for (let i = 0; i < data.length; ++i) {
+					if (data[i].genre === genre) {
+						console.log(data[i]);
+						temp.push(data[i].cost);
+					}
+					if (genre === 'All genre') {
+						temp.push(data[i].cost);
+					}
 				}
-				console.log(costArray);
-				const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-					saleData = labels.map((month, index) => ({
-						name: month,
-						data: costArray[index],
-					}));
-				console.log(saleData);
-				setSalesChart(saleData);
+				// call setArray
+				setCostBooks(temp);
+
+				//sum the costs up
+				let tempVar = 0;
+				for (let i = 0; i < temp.length; ++i) {
+					tempVar = tempVar + temp[i];
+				}
+				// call setSum
+				setSum(tempVar);
 			})
 			// we use .catch to handle errors
 			.catch(err => {
 				console.error(err);
 				setError(err);
 			});
-	}, []);
+	}, [genre]);
 
 	return (
 		<div>
-			{error ? (
-				// if error is not null, display error message
-				<div>ERROR: Something went wrong...</div>
-			) : Books === null ? (
-				// if numBooks is null, display loading message
-				<div>Loading...</div>
-			) : (
-				// otherwise success. display number of books
-
-				//<ResponsiveContainer width="99%" height="99%">
-				<BarChart
-					width={1500}
-					height={1000}
-					data={salesChart}
-					margin={{
-						top: 30,
-						right: 100,
-						left: 50,
-						bottom: 300,
-					}}>
-					<CartesianGrid />
-					<XAxis dataKey="name" interval={0} />
-					<YAxis />
-					<Tooltip />
-					<Legend />
-					<Bar dataKey="data" fill="#F070DE" />
-				</BarChart>
-				//</ResponsiveContainer>
-
-				// Books.map((Book, index) => {
-				// 	return <div key={index}>{Book.title}</div>;
-				// })
-			)}
+			<label>
+				Picak a genres:
+				<select value={genre} onChange={e => setGenre(e.target.value)}>
+					<option value="All genre">All genre</option>
+					<option value="Fantasy">Fantasy</option>
+					<option value="Fiction">Fiction</option>
+					<option value="Dystopian">Dystopian</option>
+					<option value="Romance">Romance</option>
+					<option value="Classic">Classic</option>
+					<option value="Adventure">Adventure</option>
+				</select>
+			</label>
+			<div>Total sales of books: {sum}</div>
+			<div>Genre: {genre}</div>
 		</div>
 	);
 };

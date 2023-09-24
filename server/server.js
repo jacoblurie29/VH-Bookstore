@@ -8,7 +8,14 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+
+// Enable CORS for your React app's domain
+const corsOptions = {
+	origin: 'http://localhost:5173', // Update with your React app's URL
+	optionsSuccessStatus: 200, // Some legacy browsers (IE11) choke on 204
+  };
+
+app.use(cors(corsOptions));
 
 const seedTheData = async () => {
 	// Connect to MongoDB
@@ -53,6 +60,7 @@ app.get('/getBookSales', async (req, res) => {
  * @returns {Error} 500 - An error message
  */
 app.post('/addBookSale', async (req, res) => {
+
 	try {
 		const { title, author, cost, genre, purchaserName, purchaserEmail, saleDate } = req.body;
 		const book = new BookSale({
