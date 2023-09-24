@@ -1,8 +1,27 @@
 import React from 'react';
 import BasicTable from './BasicTable';
 
-
 const Bookshelf = () => {
+	const axios = require('axios');
+
+	
+
+	let config = {
+		method: 'get',
+		maxBodyLength: Infinity,
+		url: 'http://localhost:5050/getBookSales',
+		headers: { }
+	};
+
+	axios.request(config)
+	.then((response) => {
+		let bookArray = response;
+		console.log(bookArray);
+	})
+	.catch((error) => {
+		console.log(error);
+	});
+
 	return <div>
 		<BasicTable></BasicTable>
 	</div>;
