@@ -73,13 +73,13 @@ const BookSales = () => {
 
 				//<ResponsiveContainer width="99%" height="99%">
 				<BarChart
-					width={1000}
+					width={1500}
 					height={1000}
 					data={salesChart}
 					margin={{
 						top: 30,
-						right: 30,
-						left: 300,
+						right: 100,
+						left: 50,
 						bottom: 300,
 					}}>
 					<CartesianGrid />
@@ -87,7 +87,7 @@ const BookSales = () => {
 					<YAxis />
 					<Tooltip />
 					<Legend />
-					<Bar dataKey="data" fill="#8884d3" />
+					<Bar dataKey="data" fill="#F070DE" />
 				</BarChart>
 				//</ResponsiveContainer>
 
