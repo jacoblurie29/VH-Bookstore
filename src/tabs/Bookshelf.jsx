@@ -1,10 +1,9 @@
 import React from 'react';
 import BasicTable from './BasicTable';
+import axios from 'axios';
 
 const Bookshelf = () => {
 	const axios = require('axios');
-
-	
 
 	let config = {
 		method: 'get',
