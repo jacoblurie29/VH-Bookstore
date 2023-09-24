@@ -64,11 +64,11 @@ const Bookshelf = () => {
         <TableBody>
           {data.map((row) => (
             <TableRow
-              key={row.name}
+              key={row.title}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.title}
               </TableCell>
               <TableCell align="right">{row.title}</TableCell>
               <TableCell align="right">{row.author}</TableCell>
