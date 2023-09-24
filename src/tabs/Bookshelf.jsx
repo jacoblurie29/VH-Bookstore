@@ -52,11 +52,13 @@ const Bookshelf = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>title</TableCell>
+						<TableCell align="right">title</TableCell>
+            <TableCell align="right">author</TableCell>
+            <TableCell align="right">cost</TableCell>
+            <TableCell align="right">purchaserEmail</TableCell>
+            <TableCell align="right">purchaserName</TableCell>
+						<TableCell align="right">saleDate</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -68,10 +70,12 @@ const Bookshelf = () => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{row.title}</TableCell>
+              <TableCell align="right">{row.author}</TableCell>
+              <TableCell align="right">{row.cost}</TableCell>
+              <TableCell align="right">{row.purchaserEmail}</TableCell>
+							<TableCell align="right">{row.purchaserName}</TableCell>
+							<TableCell align="right">{row.saleDate}</TableCell>
             </TableRow>
           ))}
         </TableBody>
