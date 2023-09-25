@@ -10,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 const Bookshelf = () => {
-	const [data, setData] = useState();
+	const [data, setData] = useState([]);
 
 	useEffect(()=> {
 		let config = {
@@ -22,7 +22,7 @@ const Bookshelf = () => {
 	
 		axios.request(config)
 		.then((response) => {
-			setData(response);
+			setData(response.data);
 		})
 	
 		.catch((error) => {
@@ -62,7 +62,7 @@ const Bookshelf = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row) => (
+          {data?.map((row) => (
             <TableRow
               key={row.title}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
