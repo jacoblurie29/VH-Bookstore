@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import styles from '../Styles/MonthlySales.module.css';
 
 const MonthlySales = () => {
 	// TODO:
@@ -61,7 +62,7 @@ const MonthlySales = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className={styles.container}>
 			{error ? (
 				// if error is not null, display error message
 				<div>ERROR: Something went wrong...</div>
@@ -70,10 +71,9 @@ const MonthlySales = () => {
 				<div>Loading...</div>
 			) : (
 				// otherwise success. display number of books
-
 				//<ResponsiveContainer width="99%" height="99%">
 				<BarChart
-					width={1500}
+					width={1300}
 					height={1000}
 					data={salesChart}
 					margin={{
@@ -83,17 +83,22 @@ const MonthlySales = () => {
 						bottom: 300,
 					}}>
 					<CartesianGrid />
-					<XAxis dataKey="name" interval={0} />
-					<YAxis />
+					<XAxis dataKey="name" interval={0} stroke="red" />
+					<YAxis stroke="red" />
 					<Tooltip />
+					<text
+						x="50%"
+						y="2%"
+						style={{ fontSize: 24, fontWeight: 'bold', fill: '#F070DE' }}
+						width={200}
+						textAnchor="middle"
+						verticalAnchor="middle">
+						Sales Data
+					</text>
 					<Legend />
 					<Bar dataKey="data" fill="#F070DE" />
 				</BarChart>
 				//</ResponsiveContainer>
-
-				// Books.map((Book, index) => {
-				// 	return <div key={index}>{Book.title}</div>;
-				// })
 			)}
 		</div>
 	);
