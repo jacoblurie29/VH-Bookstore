@@ -1,5 +1,33 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
+const MyCustomDiv = styled.div`
+	padding: 20px;
+	border: 5px solid pink;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+`;
+
+const CustomHeader = styled.div`
+    font-size: 18px;
+`;
+
+const CustomSubheader = styled.div`
+	font-size: 14px;
+	background-color: pink;
+	width: fit-content;
+	animation: rotation 1s infinite ease-in-out;
+
+	@keyframes rotation {
+		from {
+			transform: rotate(0deg)
+		}
+		to {
+			transform: rotate(360deg)
+		}
+	}
+`;
 
 const Example = () => {
 	// number of books as a react state (null is the initial value)
@@ -38,18 +66,21 @@ const Example = () => {
 	}, []);
 
 	return (
-		<div>
+		<MyCustomDiv>
 			{error ? (
 				// if error is not null, display error message
 				<div>ERROR: Something went wrong...</div>
 			) : numBooks === null ? (
 				// if numBooks is null, display loading message
-				<div>Loading...</div>
+				<CustomHeader>Loading...</CustomHeader>
 			) : (
-				// otherwise success. display number of books
-				<div>Number of books: {numBooks}</div>
+				<>
+				{/* otherwise success. display number of books */}
+				<CustomHeader>Number of books:</CustomHeader>
+				<CustomSubheader>{numBooks}</CustomSubheader>
+				</>
 			)}
-		</div>
+		</MyCustomDiv>
 	);
 };
 
