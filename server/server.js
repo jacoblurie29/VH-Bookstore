@@ -4,6 +4,7 @@ import connectToMongoDB from './mongodb.config.js';
 import { seedData } from './seedData/seedData.js';
 import BookSale from './models/bookSale.model.js';
 import { addBookSale, deleteBookSale, getBookSales, updateBookSale } from './controllers/bookSale.controller.js';
+import { getAllCustomers, addCustomer, deleteCustomer, getCustomer, updateCustomer } from './controllers/customer.controller.js';
 
 const app = express();
 
@@ -32,10 +33,20 @@ const seedTheData = async () => {
 await seedTheData();
 
 // Routes
+app.get('/', (req, res) => {
+	res.send('Hello World');
+})
+
 app.get('/getBookSales', getBookSales);
 app.post('/addBookSale', addBookSale);
 app.put('/updateBookSale', updateBookSale);
 app.delete('/deleteBookSale', deleteBookSale);
+
+app.get('/getCustomer', getCustomer);
+app.get('/getAllCustomers', getAllCustomers);
+app.post('/addCustomer', addCustomer);
+app.put('/updateCustomer', updateCustomer);
+app.delete('/deleteCustomer', deleteCustomer);
 
 // Start server
 const PORT = process.env.VITE_PORT || 5050;
